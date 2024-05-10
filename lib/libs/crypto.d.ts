@@ -1,0 +1,14 @@
+export declare const getPhoneEncrypt: (inpVal: string) => string;
+export declare const getDefaultToken: () => string;
+export declare const cryptoMd5: (inpVal: string) => string;
+export declare const getQueryStr: (inpVal: any, inEncode?: boolean) => string;
+export declare const cryptoSHA3: (inpVal: string) => Promise<string>;
+export declare const cryptoSHA3WithKey: (signData: string, secretKey: string) => string;
+export declare const getDataByTokenAndKey: (inToken: string, inKey: string) => Promise<unknown>;
+export declare const getUuid: () => string;
+export declare const encryptAES: (inpVal: string) => string;
+export declare const decryptAES: (inpVal: string) => string;
+export declare const randomPassword: (inpVal: number) => string;
+export declare const randomNumber: (inpVal: number) => string;
+export declare const generateAuthToken: (inpVal: any) => string;
+export declare const generateAuthRefreshToken: (inpVal: string) => string;
