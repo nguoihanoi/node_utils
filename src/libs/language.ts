@@ -1,14 +1,13 @@
 import { printf } from 'fast-printf';
 import * as path from "path";
-import i18next from 'i18next';
+import * as i18next from 'i18next';
 import backendI18 from "i18next-fs-backend";
 let initStatus = false;
 
 const initData = () => {
     if (initStatus == false)
         try {
-            const pathText = path.join(path.resolve(path.resolve(__dirname, ".."), ".."), "locales") + '/{{lng}}.json';
-            console.log(pathText);
+            const pathText = path.join(path.resolve(path.resolve(path.resolve(path.resolve(__dirname, ".."), ".."), ".."), ".."), "locales") + '/{{lng}}.json';
             i18next.use(backendI18).init({
                 initImmediate: false,
                 backend: {
