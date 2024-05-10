@@ -3,7 +3,7 @@ import * as path from "path";
 import * as i18next from 'i18next';
 let initStatus = false;
 
-const initData = (backendI18: any) => {
+const _initData = (backendI18: any) => {
     if (initStatus == false)
         try {
             const pathText = path.join(path.resolve(path.resolve(path.resolve(path.resolve(__dirname, ".."), ".."), ".."), ".."), "locales") + '/{{lng}}.json';
@@ -20,10 +20,10 @@ const initData = (backendI18: any) => {
             console.error(error);
         }
 }
-
-export const oneText = (inText: string, inLang: string = "vi", inputInit: any = false) => {
-    if (inputInit != false)
-        initData(inputInit);
+export const initData = (inputInit: any) => {
+    _initData(inputInit);
+};
+export const oneText = (inText: string, inLang: string = "vi") => {
     return i18next.t(inText, { lng: inLang });
 };
 export const replaceText = (inText: string, ...inValue: string[]) => {
