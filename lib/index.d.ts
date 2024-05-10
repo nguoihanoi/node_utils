@@ -1,0 +1,10 @@
+import * as crypto from "./libs/crypto";
+import * as language from "./libs/language";
+import * as response from "./libs/response";
+import * as time from "./libs/time";
+import * as validation from "./libs/validation";
+export declare const libCrypto: typeof crypto;
+export declare const libLang: typeof language;
+export declare const libResp: typeof response;
+export declare const libTime: typeof time;
+export declare const libValidation: typeof validation;
