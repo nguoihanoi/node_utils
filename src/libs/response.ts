@@ -71,35 +71,67 @@ const _responseDataMsg = (inCode: string, inLang: string = "vi", inData: any = f
     if (inData != false) output.data = inData;
     return output;
 };
-export const responseError = (inCode: number, inLang: string = "vi") => {
+export const responseError = (ctx: any, inCode: number, inLang: string = "vi") => {
+    let output;
     switch (inCode) {
         case 401:
-            return _return401(inLang);
+            output = _return401(inLang);
         case 402:
-            return _return402(inLang);
+            output = _return402(inLang);
         case 403:
-            return _return403(inLang);
+            output = _return403(inLang);
         case 405:
-            return _return405(inLang);
+            output = _return405(inLang);
         case 408:
-            return _return408(inLang);
+            output = _return408(inLang);
         default:
-            return _responseErrorMsg("An error occurred during processing.", inLang);
+            output = _responseErrorMsg("An error occurred during processing.", inLang);
     }
+    ctx.body = {
+        status: output.status,
+        message: output.message,
+    };
+    ctx.response.status = output.statusCode;
 };
 
-export const responseErrorProcess = (inLang: string = "vi") => {
-    return _responseErrorMsg("An error occurred during processing.", inLang);
+export const responseErrorProcess = (ctx: any, inLang: string = "vi") => {
+    let output = _responseErrorMsg("An error occurred during processing.", inLang);
+    ctx.body = {
+        status: output.status,
+        message: output.message,
+    };
+    ctx.response.status = output.statusCode;
 };
-export const responseInvalidInput = (inLang: string = "vi") => {
-    return _responseErrorMsg("Invalid input data!", inLang);
+export const responseInvalidInput = (ctx: any, inLang: string = "vi") => {
+    let output = _responseErrorMsg("Invalid input data!", inLang);
+    ctx.body = {
+        status: output.status,
+        message: output.message,
+    };
+    ctx.response.status = output.statusCode;
 };
-export const responseErrorMsg = (inCode: string, inLang = "vi", statusCode = 406) => {
-    return _responseErrorMsg(inCode, inLang, false, statusCode);
+export const responseErrorMsg = (ctx: any, inCode: string, inLang = "vi", statusCode = 406) => {
+    let output = _responseErrorMsg(inCode, inLang);
+    ctx.body = {
+        status: output.status,
+        message: output.message,
+    };
+    ctx.response.status = statusCode;
 };
-export const responseNoResult = (inData = false, inLang = "vi") => {
-    return _responseErrorMsg("No results found on the system!", inLang, inData);
+export const responseNoResult = (ctx: any, inData = false, inLang = "vi") => {
+    let output = _responseErrorMsg("No results found on the system!", inLang, inData);
+    ctx.body = {
+        status: output.status,
+        message: output.message,
+        data: output.data,
+    };
+    ctx.response.status = output.statusCode;
 };
-export const responseSuccess = (inCode: string, inLang = "vi", inData = false) => {
-    return _responseDataMsg(inCode, inLang, inData);
+export const responseSuccess = (ctx: any, inCode: string, inLang = "vi", inData = false) => {
+    let output = _responseDataMsg(inCode, inLang, inData);
+    ctx.body = {
+        status: output.status,
+        message: output.message,
+        data: output.data,
+    };
 };
