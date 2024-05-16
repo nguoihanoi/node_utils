@@ -127,7 +127,7 @@ export const responseNoResult = (ctx: any, inData = false, inLang = "vi") => {
     };
     ctx.response.status = output.statusCode;
 };
-export const responseSuccess = (ctx: any, inCode: string, inLang = "vi", inData = false) => {
+export const responseSuccess = (ctx: any, inCode: string, inLang = "vi", inData: any = false) => {
     let output = _responseDataMsg(inCode, inLang, inData);
     ctx.body = {
         status: output.status,
