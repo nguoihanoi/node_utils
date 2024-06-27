@@ -51,7 +51,7 @@ const _getQueryStr = (inpVal: any, inEncode = true) => {
     return querystring.stringify(inpVal, { encode: inEncode });
 };
 
-const _cryptoSHA3WithKey = (inpVal: string, secretKey: string) => {
+const _cryptoSHA3WithKey = (inpVal: any, secretKey: string) => {
     var signData = _getQueryStr(inpVal);
     var hmac = crypto.createHmac("sha512", secretKey);
     var signed = hmac.update(signData).digest("hex");
@@ -119,7 +119,7 @@ export const cryptoSHA3 = async (inpVal: string) => {
     return await _cryptoSHA3(inpVal);
 };
 
-export const cryptoSHA3WithKey = (signData: string, secretKey: string) => {
+export const cryptoSHA3WithKey = (signData: any, secretKey: string) => {
     return _cryptoSHA3WithKey(signData, secretKey);
 }
 
