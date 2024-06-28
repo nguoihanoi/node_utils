@@ -122,8 +122,8 @@ export const cryptoSHA3 = async (inpVal: string) => {
     return await _cryptoSHA3(inpVal);
 };
 
-export const cryptoSHA3WithKey = (signData: any, secretKey: string) => {
-    return _cryptoSHA3WithKey(signData, secretKey);
+export const cryptoSHA3WithKey = (signData: any, secretKey: string, isObject:number=1) => {
+    return _cryptoSHA3WithKey(signData, secretKey, isObject);
 }
 
 export const getDataByTokenAndKey = async (inToken: string, inKey: string) => {
