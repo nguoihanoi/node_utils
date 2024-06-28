@@ -51,8 +51,11 @@ const _getQueryStr = (inpVal: any, inEncode = true) => {
     return querystring.stringify(inpVal, { encode: inEncode });
 };
 
-const _cryptoSHA3WithKey = (inpVal: any, secretKey: string) => {
-    var signData = _getQueryStr(inpVal);
+const _cryptoSHA3WithKey = (inpVal: any, secretKey: string, isObject:number=1) => {
+    var signData;
+    if (isObject==1)
+        signData = _getQueryStr(inpVal);
+    else signData = inpVal;
     var hmac = crypto.createHmac("sha512", secretKey);
     var signed = hmac.update(signData).digest("hex");
     return signed;
